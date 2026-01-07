@@ -1,4 +1,4 @@
-import { AuthProvider, QueryProvider, TenantProvider } from "@gaqno-dev/frontcore";
+import { AuthProvider, QueryProvider, TenantProvider } from "@gaqno-development/frontcore";
 import React from "react";
 
 
