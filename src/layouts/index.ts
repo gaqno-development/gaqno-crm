@@ -1,0 +1,1 @@
+export { CRMPageLayout } from './CRMPageLayout';
