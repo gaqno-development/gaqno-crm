@@ -30,14 +30,21 @@ RUN echo 'server { \
     server_name _; \
     root /usr/share/nginx/html; \
     index index.html; \
+    location /crm/ { \
+    alias /usr/share/nginx/html/; \
+    try_files $uri $uri/ /crm/index.html; \
+    add_header Access-Control-Allow-Origin "*"; \
+    add_header Cache-Control "public, immutable"; \
+    } \
     location / { \
-        try_files $uri $uri/ /index.html; \
+    try_files $uri $uri/ /index.html; \
     } \
     location /assets { \
-        expires 1y; \
-        add_header Cache-Control "public, immutable"; \
+    expires 1y; \
+    add_header Cache-Control "public, immutable"; \
+    add_header Access-Control-Allow-Origin "*"; \
     } \
-}' > /etc/nginx/conf.d/default.conf
+    }' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 3003
 CMD ["nginx", "-g", "daemon off;"]
